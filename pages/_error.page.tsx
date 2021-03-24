@@ -1,3 +1,5 @@
+import * as React from 'react'
+
 export function Page({ is404 }: { is404: boolean }) {
   if (is404) {
     return (

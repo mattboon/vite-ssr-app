@@ -6,18 +6,17 @@ interface StaticLocationHookOptions {
 }
 
 export function staticLocationHook(path = '/', { record = false }: StaticLocationHookOptions) {
-  let hook: any
-
-  const navigate = (to: string, { replace }: any = {}) => {
-    if (record) {
-      if (replace) {
-        hook.history.pop()
+  const hook = () => [
+    path,
+    (to: string, { replace }: any = {}) => {
+      if (record) {
+        if (replace) {
+          hook.history.pop()
+        }
+        hook.history.push(to)
       }
-      hook.history.push(to)
-    }
-  }
-
-  hook = () => [path, navigate]
+    },
+  ]
 
   hook.history = [path]
 
