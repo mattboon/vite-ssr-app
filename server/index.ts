@@ -1,7 +1,6 @@
 import express from 'express'
 import * as vite from 'vite'
 import { createPageRender } from 'vite-plugin-ssr'
-import { ContextProps } from '../types'
 
 const isProduction = process.env.NODE_ENV === 'production'
 const root = `${__dirname}/..`
@@ -25,7 +24,7 @@ async function startServer() {
   app.get('*', async (req, res, next) => {
     const url = req.originalUrl
 
-    const contextProps: ContextProps = {
+    const contextProps = {
       path: req.path,
       query: req.query,
     }

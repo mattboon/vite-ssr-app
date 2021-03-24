@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { Link, useLocation } from 'wouter'
 import { PageProps } from '../types'
 import './App.css'
 
@@ -9,17 +8,15 @@ function Counter() {
   return <button onClick={() => setCount((count) => count + 1)}>Counter {count}</button>
 }
 
-export function Page({ data }: PageProps) {
-  const [location] = useLocation()
-
+export function Page({ data, path }: PageProps) {
   return (
     <div className="app">
       <nav className="nav">
-        <Link to="/">Home</Link>
-        <Link to="/page-1">Page 1</Link>
-        <Link to="/page-2">Page 2</Link>
+        <a href="/">Home</a>
+        <a href="/page-1">Page 1</a>
+        <a href="/page-2">Page 2</a>
       </nav>
-      <h1>{location}</h1>
+      <h1>{path}</h1>
       <p>This page is:</p>
       <ul>
         <li>Rendered to HTML.</li>
@@ -27,9 +24,7 @@ export function Page({ data }: PageProps) {
           Interactive. <Counter />
         </li>
       </ul>
-      <p>
-        <strong>@TODO:</strong> This should change on navigation:
-      </p>
+      <p>This should change on navigation:</p>
       <p>{data}</p>
     </div>
   )

@@ -2,11 +2,13 @@ import { Request } from 'express'
 
 export type ReactComponent = (pageProps: PageProps) => JSX.Element
 
-export type PageProps = {
+export interface PageProps {
+  path: string
+  query: Request['query']
   data: string
 }
 
-export type ContextProps = {
+export interface ContextProps {
   path: string
   query: Request['query']
 }
